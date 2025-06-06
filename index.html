@@ -1,119 +1,93 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>我的游戏世界</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
-      color: #333;
-    }
-    header {
-      background-color: #222;
-      color: #fff;
-      padding: 1rem;
-      text-align: center;
-    }
-    header h1 {
-      font-size: 1.8rem;
-    }
-    .container {
-      max-width: 1200px;
-      margin: auto;
-      padding: 1rem;
-    }
-    .game-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1.5rem;
-    }
-    .game-card {
-      background-color: #fff;
-      border-radius: 10px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-      overflow: hidden;
-      transition: transform 0.3s ease;
-    }
-    .game-card:hover {
-      transform: translateY(-5px);
-    }
-    .game-thumb {
-      width: 100%;
-      aspect-ratio: 16/9;
-      object-fit: cover;
-    }
-    .game-title {
-      padding: 0.75rem 1rem;
-      font-size: 1.1rem;
-      text-align: center;
-      background-color: #fafafa;
-    }
-    .game-title a {
-      text-decoration: none;
-      color: #333;
-    }
-    .game-title a:hover {
-      color: #007bff;
-    }
-    footer {
-      text-align: center;
-      padding: 1rem;
-      background-color: #222;
-      color: #ccc;
-      margin-top: 2rem;
-    }
-  </style>
+  <title>My Game World</title>
+  <link rel="stylesheet" href="style1.css">
 </head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JEKZFS179D"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-JEKZFS179D');
+</script>
 <body>
 
   <header>
-    <h1>HTML5 Online mini game platform</h1>
+    <h1>HTML5 Online Mini Game Platform</h1>
   </header>
 
   <div class="container">
+    <nav class="category-filter">
+      <button class="filter-btn active" data-filter="all">All Games</button>
+      <button class="filter-btn" data-filter="simulation">Simulation</button>
+      <button class="filter-btn" data-filter="dress-up">Dress-up</button>
+      <button class="filter-btn" data-filter="puzzle">Puzzle</button>
+      </nav>
+
     <div class="game-grid">
-      <!-- 游戏卡片1 -->
-      <div class="game-card">
+      <div class="game-card" data-category="simulation">
         <a href="game1.html">
-          <img class="game-thumb" src="https://img.gamemonetize.com/txnijszkyqla9lqroes01xkk6g3shfav/512x512.jpg" alt="Dirty Home Cleaning Fix">
+          <img class="game-thumb" src="https://img.gamemonetize.com/txnijszkyqla9lqroes01xkk6g3shfav/512x512.jpg" alt="Dirty Home Cleaning Fix Thumbnail">
+          <div class="game-title">
+            Dirty Home Cleaning Fix
+          </div>
         </a>
-        <div class="game-title">
-          <a href="game1.html">Dirty Home Cleaning Fix</a>
-        </div>
       </div>
 
-      <!-- 游戏卡片2 -->
-      <div class="game-card">
+      <div class="game-card" data-category="dress-up">
         <a href="game2.html">
-          <img class="game-thumb" src="https://img.gamemonetize.com/aajudg584h4kkrox89p2nwywr47f1qqf/512x384.jpg" alt="Build A Qaeen 2025">
+          <img class="game-thumb" src="https://img.gamemonetize.com/aajudg584h4kkrox89p2nwywr47f1qqf/512x384.jpg" alt="Build A Qaeen 2025 Thumbnail">
+          <div class="game-title">
+            Build A Qaeen 2025
+          </div>
         </a>
-        <div class="game-title">
-          <a href="game2.html">Build A Qaeen 2025</a>
-        </div>
       </div>
 
-      <!-- 游戏卡片3 -->
-      <div class="game-card">
+      <div class="game-card" data-category="puzzle">
         <a href="game3.html">
-          <img class="game-thumb" src="https://img.gamemonetize.com/5b3fngcipidbzcmxntcy7rtjwf1d2ttv/512x384.jpg" alt="Blocks Stack Rush">
+          <img class="game-thumb" src="https://img.gamemonetize.com/5b3fngcipidbzcmxntcy7rtjwf1d2ttv/512x384.jpg" alt="Blocks Stack Rush Thumbnail">
+          <div class="game-title">
+            Blocks Stack Rush
+          </div>
         </a>
-        <div class="game-title">
-          <a href="game3.html">Blocks Stack Rush</a>
-        </div>
       </div>
     </div>
   </div>
 
   <footer>
-    &copy; 2025 我的游戏世界 | 所有游戏版权归原作者所有
+    &copy; 2025 My Game World | All game copyrights belong to their respective authors
   </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const filterButtons = document.querySelectorAll('.filter-btn');
+      const gameCards = document.querySelectorAll('.game-card');
+
+      filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+          // 移除所有按钮的 active 类
+          filterButtons.forEach(btn => btn.classList.remove('active'));
+          // 为点击的按钮添加 active 类
+          button.classList.add('active');
+
+          const filter = button.dataset.filter; // 获取 data-filter 属性值
+
+          gameCards.forEach(card => {
+            if (filter === 'all' || card.dataset.category === filter) {
+              card.style.display = ''; // 显示卡片
+            } else {
+              card.style.display = 'none'; // 隐藏卡片
+            }
+          });
+        });
+      });
+    });
+  </script>
 
 </body>
 </html>
