@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://taptik.store/sitemap.xml
