@@ -1,31 +1,176 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- 自动生成的站点地图 -->
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <!-- 自动生成的站点地图 -->
+    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <!-- 首页 -->
+      <!-- 首页 -->
+      <url>
+        <loc>https://taptik.store/</loc>
+        <priority>1.0</priority>
+        <changefreq>daily</changefreq>
+        <lastmod>2025-06-22</lastmod>
+      </url>
+      
   <url>
-    <loc>https://taptik.store/</loc>
-    <priority>1.0</priority>
-    <changefreq>daily</changefreq>
-    <lastmod>2025-06-22</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://taptik.store/test1.html</loc>
+    <loc>https://taptik.store/Dirty-Home-Cleaning-Fix.html</loc>
     <priority>0.8</priority>
     <changefreq>weekly</changefreq>
     <lastmod>2025-06-22</lastmod>
   </url>
   <url>
-    <loc>https://taptik.store/test2.html</loc>
+    <loc>https://taptik.store/Build-A-Qaeen-2025.html</loc>
     <priority>0.8</priority>
     <changefreq>weekly</changefreq>
     <lastmod>2025-06-22</lastmod>
   </url>
   <url>
-    <loc>https://taptik.store/test3.html</loc>
+    <loc>https://taptik.store/Blocks-Stack-Rush.html</loc>
     <priority>0.8</priority>
     <changefreq>weekly</changefreq>
     <lastmod>2025-06-22</lastmod>
   </url>
-</urlset>
+  <url>
+    <loc>https://taptik.store/House-Cleaning-ASMR.html</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2025-06-22</lastmod>
+  </url>
+  <url>
+    <loc>https://taptik.store/Hexa-Puzzle-Master.html</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2025-06-22</lastmod>
+  </url>
+  <url>
+    <loc>https://taptik.store/Samurai-Cow-Man.html</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2025-06-22</lastmod>
+  </url>
+  <url>
+    <loc>https://taptik.store/CircleCrash.html</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2025-06-22</lastmod>
+  </url>
+  <url>
+    <loc>https://taptik.store/Monster-Truck-Dirt-Rally.html</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2025-06-22</lastmod>
+  </url>
+  <url>
+    <loc>https://taptik.store/Word-Search-Universe.html</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2025-06-22</lastmod>
+  </url>
+  <url>
+    <loc>https://taptik.store/Fruit-Merge-Juicy-Drop-Fun.html</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2025-06-22</lastmod>
+  </url>
+  <url>
+    <loc>https://taptik.store/The-Hidden-Booty.html</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2025-06-22</lastmod>
+  </url>
+  <url>
+    <loc>https://taptik.store/Cat-Up.html</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2025-06-22</lastmod>
+  </url>
+  <url>
+    <loc>https://taptik.store/Gummy-Blocks-Puzzle.html</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2025-06-22</lastmod>
+  </url>
+  <url>
+    <loc>https://taptik.store/Light-It-Rush.html</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2025-06-22</lastmod>
+  </url>
+  <url>
+    <loc>https://taptik.store/Super-Motocross.html</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2025-06-22</lastmod>
+  </url>
+  <url>
+    <loc>https://taptik.store/Hide-And-Seek-Friends!.html</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2025-06-22</lastmod>
+  </url>
+  <url>
+    <loc>https://taptik.store/DIY-Ice-Cream-Roll-Cone.html</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2025-06-22</lastmod>
+  </url>
+  <url>
+    <loc>https://taptik.store/VehicleFactory.html</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2025-06-22</lastmod>
+  </url>
+  <url>
+    <loc>https://taptik.store/CircleLeap.html</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2025-06-22</lastmod>
+  </url>
+  <url>
+    <loc>https://taptik.store/Wicked-Whirl.html</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2025-06-22</lastmod>
+  </url>
+  <url>
+    <loc>https://taptik.store/Sprunki-Dead-Rails.html</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2025-06-22</lastmod>
+  </url>
+  <url>
+    <loc>https://taptik.store/Slime-Smile.html</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2025-06-22</lastmod>
+  </url>
+  <url>
+    <loc>https://taptik.store/Pixel-Path.html</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2025-06-22</lastmod>
+  </url>
+  <url>
+    <loc>https://taptik.store/Sauce-Silk-Spy.html</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2025-06-22</lastmod>
+  </url>
+  <url>
+    <loc>https://taptik.store/Sprunki-Ketchup-Mod.html</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2025-06-22</lastmod>
+  </url>
+  <url>
+    <loc>https://taptik.store/BlockPuzzleMagic.html</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2025-06-22</lastmod>
+  </url>
+  <url>
+    <loc>https://taptik.store/Truck-Driving-Simulator-offroad.html</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2025-06-22</lastmod>
+  </url>
+    </urlset>
+    

@@ -1,7 +1,10 @@
 import csv
 import os
 import random
-from datetime import datetime
+from datetime import datetime, timezone
+import pandas as pd
+
+print("脚本开始执行...")
 
 # 基础站点 URL（用于 sitemap）
 BASE_URL = "https://taptik.store"
@@ -9,8 +12,8 @@ BASE_URL = "https://taptik.store"
 # ----------- 分类推断函数 -----------
 def infer_category(title, description=""):
     """根据游戏标题和描述推断分类"""
-    title_lower = title.lower()
-    desc_lower = description.lower()
+    title_lower = str(title).lower()
+    desc_lower = str(description).lower()
     
     # 模拟类游戏
     simulation_keywords = ['cleaning', 'cooking', 'dress', 'makeup', 'beauty', 'house', 'home', 'simulator', 'factory']
@@ -100,120 +103,129 @@ card_template = """
 
 # ----------- 数据读取与页面生成 -----------
 
-cards_html = ""
-games_data = []
+# 读取 games.xlsx 文件中的游戏数据
+try:
+    df = pd.read_excel("games.xlsx")
+    # 将DataFrame转换为字典列表
+    games_data = df.to_dict('records')
+except FileNotFoundError:
+    print("错误: games.xlsx 文件未找到。请确保文件存在。")
+    games_data = []
+except Exception as e:
+    print(f"读取 games.xlsx 时发生错误: {e}")
+    games_data = []
 
-with open("games.csv",newline='',encoding='latin1') as csvfile:
-    reader = csv.DictReader(csvfile)
-    for row in reader:
-        games_data.append(row)
+# 检查是否成功读取数据
+if not games_data:
+    print("未能加载游戏数据，脚本将停止执行。")
+else:
+    cards_html = ""
+    sitemap_entries = []
 
-# 存放 sitemap 中的页面 URL 项
-sitemap_entries = []
+    # 遍历每个游戏数据生成独立页面
+    for current_game in games_data:
+        # 从字典中获取数据，使用.get()避免KeyError
+        current_id = current_game.get('id', str(random.randint(1000, 9999)))
+        title = current_game.get('title', 'No Title')
+        url = current_game.get('url', '#')
+        description = current_game.get('description', 'No description available.')
+        rating = current_game.get('rating', 0)
+        thumbnail = current_game.get('thumbnail', 'placeholder.jpg')
+        filename = f"{str(title).replace(' ', '-')}.html" # 创建更友好的文件名
+    
+        # 生成评分星星
+        rating_float = float(rating)
+        stars_filled = '★' * int(rating_float)
+        stars_empty = '☆' * (5 - int(rating_float))
+        rating_stars = f'<span class="stars">{stars_filled}</span>{stars_empty}'
 
-# 遍历每个游戏数据生成独立页面
-for current_game in games_data:
-    current_id = current_game['id']
-    title = current_game['title']
-    url = current_game['url']
-    description = current_game['description']
-    rating = current_game['rating']
-    thumbnail = current_game['thumbnail']
-    filename = f"{current_id}.html"
+        # 推荐其他游戏（排除自己）
+        other_games = [g for g in games_data if g['id'] != current_id]
+        recommended = random.sample(other_games, min(3, len(other_games)))
+        recommend_cards = ""
+        for g in recommended:
+            recommend_cards += f"""
+            <a href="{g['id']}.html" class="recommend-card">
+              <img src="{g['thumbnail']}" alt="{g['title']}" />
+              <div class="title">{g['title']}</div>
+            </a>"""
 
-    # 生成评分星星
-    rating_float = float(rating)
-    stars_filled = '★' * int(rating_float)
-    stars_empty = '☆' * (5 - int(rating_float))
-    rating_stars = f'<span class="stars">{stars_filled}</span>{stars_empty}'
+        # 写入每个游戏的 HTML 页面
+        with open(filename, "w", encoding="utf-8") as f:
+            f.write(game_template.format(
+                title=title,
+                url=url,
+                description=description,
+                rating=rating,
+                rating_stars=rating_stars,
+                recommend_cards=recommend_cards
+            ))
 
-    # 推荐其他游戏（排除自己）
-    other_games = [g for g in games_data if g['id'] != current_id]
-    recommended = random.sample(other_games, min(3, len(other_games)))
-    recommend_cards = ""
-    for g in recommended:
-        recommend_cards += f"""
-        <a href="{g['id']}.html" class="recommend-card">
-          <img src="{g['thumbnail']}" alt="{g['title']}" />
-          <div class="title">{g['title']}</div>
-        </a>"""
+        # 首页卡片拼接
+        category = infer_category(title, description)
+        cards_html += card_template.format(filename=filename, thumbnail=thumbnail, title=title, category=category)
 
-    # 写入每个游戏的 HTML 页面
-    with open(filename, "w", encoding="utf-8") as f:
-        f.write(game_template.format(
-            title=title,
-            url=url,
-            description=description,
-            rating=rating,
-            rating_stars=rating_stars,
-            recommend_cards=recommend_cards
-        ))
-
-    # 首页卡片拼接
-    category = infer_category(title, description)
-    cards_html += card_template.format(filename=filename, thumbnail=thumbnail, title=title, category=category)
-
-    # 添加 sitemap 条目
-    sitemap_entries.append(f"""
+        # 添加 sitemap 条目
+        sitemap_entries.append(f"""
   <url>
     <loc>{BASE_URL}/{filename}</loc>
     <priority>0.8</priority>
     <changefreq>weekly</changefreq>
-    <lastmod>{datetime.utcnow().date()}</lastmod>
+    <lastmod>{datetime.now(timezone.utc).date()}</lastmod>
   </url>""")
 
-# ----------- 生成首页 HTML -----------
+    # ----------- 生成首页 HTML -----------
 
-index_html = f"""<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Game Portal</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
-  <h1>🎮 HTML5 Game Portal</h1>
-  <div class="grid">
-    {cards_html}
-  </div>
-</body>
-</html>
-"""
+    index_html = f"""<!DOCTYPE html>
+    <html lang="en">
+    <head>
+      <meta charset="UTF-8">
+      <title>Game Portal</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+      <h1>🎮 HTML5 Game Portal</h1>
+      <div class="grid">
+        {cards_html}
+      </div>
+    </body>
+    </html>
+    """
 
-# 写入首页文件
-# 1. 读取原始 index.html
-with open("index.html", "r", encoding="utf-8") as f:
-    index_content = f.read()
+    # 写入首页文件
+    # 1. 读取原始 index.html
+    with open("index.html", "r", encoding="utf-8") as f:
+        index_content = f.read()
 
-# 2. 替换插入区（标记处）
-new_index = index_content.replace(
-    "<!-- GAME_CARD_INSERT -->",
-    cards_html + "\n<!-- GAME_CARD_INSERT -->"
-)
+    # 2. 替换插入区（标记处）
+    new_index = index_content.replace(
+        "<!-- GAME_CARD_INSERT -->",
+        cards_html + "\n<!-- GAME_CARD_INSERT -->"
+    )
 
-# 3. 写回 index.html（保留其它内容）
-with open("index.html", "w", encoding="utf-8") as f:
-    f.write(new_index)
+    # 3. 写回 index.html（保留其它内容）
+    with open("index.html", "w", encoding="utf-8") as f:
+        f.write(new_index)
 
-# ----------- 生成 sitemap.xml -----------
+    # ----------- 生成 sitemap.xml -----------
 
-sitemap_content = f"""<?xml version="1.0" encoding="UTF-8"?>
-<!-- 自动生成的站点地图 -->
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    sitemap_content = f"""<?xml version="1.0" encoding="UTF-8"?>
+    <!-- 自动生成的站点地图 -->
+    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <!-- 首页 -->
-  <url>
-    <loc>{BASE_URL}/</loc>
-    <priority>1.0</priority>
-    <changefreq>daily</changefreq>
-    <lastmod>{datetime.utcnow().date()}</lastmod>
-  </url>
-  {''.join(sitemap_entries)}
-</urlset>
-"""
+      <!-- 首页 -->
+      <url>
+        <loc>{BASE_URL}/</loc>
+        <priority>1.0</priority>
+        <changefreq>daily</changefreq>
+        <lastmod>{datetime.now(timezone.utc).date()}</lastmod>
+      </url>
+      {''.join(sitemap_entries)}
+    </urlset>
+    """
 
-# 写入 sitemap.xml 文件
-with open("sitemap.xml", "w", encoding="utf-8") as f:
-    f.write(sitemap_content)
+    # 写入 sitemap.xml 文件
+    with open("sitemap.xml", "w", encoding="utf-8") as f:
+        f.write(sitemap_content)
 
-print("✅ 所有页面已生成，并自动创建 sitemap.xml")
+    print("✅ 所有页面已生成，并自动创建 sitemap.xml")
