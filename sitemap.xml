@@ -1,14 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
+<!-- 自动生成的站点地图 -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- 首页 -->
   <url>
     <loc>https://taptik.store/</loc>
-    <changefreq>daily</changefreq>
     <priority>1.0</priority>
+    <changefreq>daily</changefreq>
+    <lastmod>2025-06-22</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://taptik.store/test1.html</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2025-06-22</lastmod>
   </url>
   <url>
-    <loc>https://taptik.store/game/super-racer</loc>
-    <changefreq>weekly</changefreq>
+    <loc>https://taptik.store/test2.html</loc>
     <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2025-06-22</lastmod>
   </url>
-  <!-- 可继续添加游戏页面 -->
+  <url>
+    <loc>https://taptik.store/test3.html</loc>
+    <priority>0.8</priority>
+    <changefreq>weekly</changefreq>
+    <lastmod>2025-06-22</lastmod>
+  </url>
 </urlset>

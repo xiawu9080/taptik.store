@@ -1,61 +1,70 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Game World</title>
-  <link rel="stylesheet" href="style1.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Play Free HTML5 Browser Games | Taptik Store</title>
+    <meta name="description" content="Enjoy a variety of free online HTML5 games. Play instantly on any device, no downloads required. Discover action, puzzle, and arcade games!">
+    <meta name="keywords" content="HTML5 games, free games online, play browser games, mobile games, instant play games">
+    <link rel="canonical" href="https://taptik.store/" />
+    <meta property="og:title" content="Taptik Store - Free HTML5 Games">
+    <meta property="og:description" content="Play the best browser games online for free. No download, no install. Just tap and play!">
+    <meta property="og:image" content="https://taptik.store/images/cover.jpg">
+    <meta property="og:url" content="https://taptik.store/">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="style.css">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-JEKZFS179D"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-JEKZFS179D');
+    </script>
 </head>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-JEKZFS179D"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-JEKZFS179D');
-</script>
 <body>
-
   <header>
-    <h1>HTML5 Online Mini Game Platform</h1>
+    <div class="header-content">
+      <h1>HTML5 Online Mini Game Platform</h1>
+      <div class="intro-text">
+        Welcome to Taptik Store, where boredom ends! Discover hundreds of mobile-friendly, no-download games across categories like puzzle, action, and strategy. Tap and play now!
+      </div>
+    </div>
   </header>
 
+  <nav class="category-filter">
+    <button class="filter-btn active" data-filter="all">All Games</button>
+    <button class="filter-btn" data-filter="simulation">Simulation</button>
+    <button class="filter-btn" data-filter="dress-up">Dress-up</button>
+    <button class="filter-btn" data-filter="puzzle">Puzzle</button>
+  </nav>
+
   <div class="container">
-    <nav class="category-filter">
-      <button class="filter-btn active" data-filter="all">All Games</button>
-      <button class="filter-btn" data-filter="simulation">Simulation</button>
-      <button class="filter-btn" data-filter="dress-up">Dress-up</button>
-      <button class="filter-btn" data-filter="puzzle">Puzzle</button>
-      </nav>
-
-    <div class="game-grid">
-      <div class="game-card" data-category="simulation">
-        <a href="game1.html">
-          <img class="game-thumb" src="https://img.gamemonetize.com/txnijszkyqla9lqroes01xkk6g3shfav/512x512.jpg" alt="Dirty Home Cleaning Fix Thumbnail">
-          <div class="game-title">
-            Dirty Home Cleaning Fix
-          </div>
-        </a>
+    <div class="game-grid" id="game-list">
+      <div class="game-card" data-category="simulation" onclick="location.href='game1.html'">
+        <img class="game-thumb" src="https://img.gamemonetize.com/txnijszkyqla9lqroes01xkk6g3shfav/512x512.jpg" alt="Dirty Home Cleaning Fix Thumbnail">
+        <div class="game-title">Dirty Home Cleaning Fix</div>
       </div>
-
-      <div class="game-card" data-category="dress-up">
-        <a href="game2.html">
-          <img class="game-thumb" src="https://img.gamemonetize.com/aajudg584h4kkrox89p2nwywr47f1qqf/512x384.jpg" alt="Build A Qaeen 2025 Thumbnail">
-          <div class="game-title">
-            Build A Qaeen 2025
-          </div>
-        </a>
+      <div class="game-card" data-category="dress-up" onclick="location.href='game2.html'">
+        <img class="game-thumb" src="https://img.gamemonetize.com/aajudg584h4kkrox89p2nwywr47f1qqf/512x384.jpg" alt="Build A Qaeen 2025 Thumbnail">
+        <div class="game-title">Build A Qaeen 2025</div>
       </div>
-
-      <div class="game-card" data-category="puzzle">
-        <a href="game3.html">
-          <img class="game-thumb" src="https://img.gamemonetize.com/5b3fngcipidbzcmxntcy7rtjwf1d2ttv/512x384.jpg" alt="Blocks Stack Rush Thumbnail">
-          <div class="game-title">
-            Blocks Stack Rush
-          </div>
-        </a>
+      <div class="game-card" data-category="puzzle" onclick="location.href='game3.html'">
+        <img class="game-thumb" src="https://img.gamemonetize.com/5b3fngcipidbzcmxntcy7rtjwf1d2ttv/512x384.jpg" alt="Blocks Stack Rush Thumbnail">
+        <div class="game-title">Blocks Stack Rush</div>
       </div>
+      <div class="game-card" data-category="simulation" onclick="location.href='House Cleaning ASMR.html'">
+        <img class="game-thumb" src="https://img.gamemonetize.com/fz5vwlmp7lx2706kg9pxh3bmwv6lrj21/512x384.jpg" alt="House Cleaning ASMR" />
+        <div class="game-title">House Cleaning ASMR</div>
+      </div>
+      <div class="game-card" data-category="puzzle" onclick="location.href='Hexa Puzzle Master.html'">
+        <img class="game-thumb" src="https://img.gamemonetize.com/f1igeukaqff5gd4d0vv30hrqo7qndkg9/512x384.jpg" alt="Hexa Puzzle Master（by s1interactivestudio）" />
+        <div class="game-title">Hexa Puzzle Master</div>
+      </div>
+      
+
+<!-- GAME_CARD_INSERT -->
     </div>
   </div>
 
@@ -67,27 +76,22 @@
     document.addEventListener('DOMContentLoaded', () => {
       const filterButtons = document.querySelectorAll('.filter-btn');
       const gameCards = document.querySelectorAll('.game-card');
-
       filterButtons.forEach(button => {
-        button.addEventListener('click', () => {
-          // 移除所有按钮的 active 类
+        button.addEventListener('click', (e) => {
+          e.preventDefault();
           filterButtons.forEach(btn => btn.classList.remove('active'));
-          // 为点击的按钮添加 active 类
           button.classList.add('active');
-
-          const filter = button.dataset.filter; // 获取 data-filter 属性值
-
+          const filter = button.dataset.filter;
           gameCards.forEach(card => {
             if (filter === 'all' || card.dataset.category === filter) {
-              card.style.display = ''; // 显示卡片
+              card.style.display = 'block';
             } else {
-              card.style.display = 'none'; // 隐藏卡片
+              card.style.display = 'none';
             }
           });
         });
       });
     });
   </script>
-
 </body>
 </html>
